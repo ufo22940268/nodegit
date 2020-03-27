@@ -45,3 +45,4 @@ jsconfig.json
 
 test/id_rsa
 test/nodegit-test-rsa
+/vendor/libgit2/cmake-build-debug/

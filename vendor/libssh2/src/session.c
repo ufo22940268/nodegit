@@ -498,7 +498,7 @@ libssh2_session_init_ex(LIBSSH2_ALLOC_FUNC((*my_alloc)),
         session->send = _libssh2_send;
         session->recv = _libssh2_recv;
         session->abstract = abstract;
-        session->api_timeout = 0; /* timeout-free API by default */
+        session->api_timeout = 120000; /* timeout-free API by default */
         session->api_block_mode = 1; /* blocking API by default */
         _libssh2_debug(session, LIBSSH2_TRACE_TRANS,
                        "New session resource allocated");

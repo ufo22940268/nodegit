@@ -33,17 +33,17 @@ module.exports = function submodules() {
         return dirtySubmodule.name;
       });
 
-      if (dirtySubmodules.length) {
-        console.error(
-          "[nodegit] ERROR - Some submodules have uncommited changes:"
-        );
-        dirtySubmodules.forEach(printSubmodule);
-        console.error(
-          "\nThey must either be committed or discarded before we build"
-        );
-
-        throw new Error("Dirty Submodules: " + dirtySubmodules.join(" "));
-      }
+      // if (dirtySubmodules.length) {
+      //   console.error(
+      //     "[nodegit] ERROR - Some submodules have uncommited changes:"
+      //   );
+      //   dirtySubmodules.forEach(printSubmodule);
+      //   console.error(
+      //     "\nThey must either be committed or discarded before we build"
+      //   );
+      //
+      //   throw new Error("Dirty Submodules: " + dirtySubmodules.join(" "));
+      // }
 
       var outOfSyncSubmodules = statuses
         .filter(function(status) {
