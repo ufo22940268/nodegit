@@ -1,7 +1,7 @@
 {
   "name": "mc-nodegit",
   "description": "Node.js libgit2 asynchronous native bindings. Ssh timeout included!",
-  "version": "0.26.5",
+  "version": "0.26.6",
   "homepage": "http://nodegit.org",
   "keywords": [
     "libgit2",
