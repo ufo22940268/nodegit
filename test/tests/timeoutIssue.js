@@ -17,7 +17,7 @@ describe("Timeout issue", function () {
     var sshEncryptedPrivateKeyPath = local("../encrypted_rsa");
 
     // Set a reasonable timeout here now that our repository has grown.
-    this.timeout(300000);
+    this.timeout(20000);
 
     beforeEach(function () {
         return fse.remove(local(`../repos`));
@@ -51,7 +51,7 @@ describe("Timeout issue", function () {
                 test.repository = repo;
             }));
         };
-        return Promise.all(Array(20).fill(0).map((_, i) => test.call(this, "git@github.com:nodegit/test.git", i)
+        return Promise.all(Array(1).fill(0).map((_, i) => test.call(this, "git@github.com:nodegit/test.git", i)
           .catch(e => console.error(e, i))));
     });
 
