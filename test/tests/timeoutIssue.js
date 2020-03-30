@@ -4,7 +4,7 @@ var fse = require("fs-extra");
 var local = path.join.bind(path, __dirname);
 var _ = require("lodash");
 
-describe("Clone issue", function () {
+describe("Timeout issue", function () {
     var NodeGit = require("../../");
     var Repository = NodeGit.Repository;
     var Clone = NodeGit.Clone;
@@ -51,6 +51,24 @@ describe("Clone issue", function () {
                 test.repository = repo;
             }));
         };
-        return Promise.all(Array(20).fill(0).map((_, i) => test.call(this, "git@github.com:nodegit/test.git", i).catch(e => console.error(e, i))));
+        return Promise.all(Array(20).fill(0).map((_, i) => test.call(this, "git@github.com:nodegit/test.git", i)
+          .catch(e => console.error(e, i))));
+    });
+
+    it("can clone with https", function() {
+        var test = this;
+        var url = "https://github.com/nodegit/test.git";
+        var opts = {
+            fetchOpts: {
+                callbacks: {
+                    certificateCheck: () => 0
+                }
+            }
+        };
+
+        return Clone(url, clonePath, opts).then(function(repo) {
+            assert.ok(repo instanceof Repository);
+            test.repository = repo;
+        });
     });
 });
